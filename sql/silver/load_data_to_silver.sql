@@ -17,7 +17,7 @@ Usage Example:
     EXEC Silver.load_silver;
 ===============================================================================
 */
-EXEC Silver.load_silver;
+EXEC silver.load_silver;
 USE dwh_nhom_1;
 GO
 CREATE OR ALTER PROCEDURE silver.load_silver AS
