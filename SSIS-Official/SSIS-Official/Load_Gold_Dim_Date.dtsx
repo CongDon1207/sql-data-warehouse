@@ -1,0 +1,576 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2025 4:09:48 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{81833DB3-B474-42EA-A3F5-9A0231733AE6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{BADD250F-26B4-4C49-8206-AFAC0B99FE44}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Load_Gold_Dim_Date"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{16A98BC7-B756-4880-A129-EC68B979338B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Load_Gold_Dim_Date"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Gold_Dim_Date_Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{2EDE3265-8D2E-42F6-841E-B38C8936261A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.Gold_SSIS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].Columns[full_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="full_date"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[full_date]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[full_date]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].Columns[quarter]"
+                      cachedDataType="i4"
+                      cachedName="quarter"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[quarter]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[quarter]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].Columns[month]"
+                      cachedDataType="i4"
+                      cachedName="month"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[month]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[month]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].Columns[day]"
+                      cachedDataType="i4"
+                      cachedName="day"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[day]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[day]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].Columns[date_key]"
+                      cachedDataType="i8"
+                      cachedName="date_key"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[date_key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      dataType="i4"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[full_date]"
+                      dataType="dbTimeStamp"
+                      name="full_date" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      dataType="i4"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[quarter]"
+                      dataType="i4"
+                      name="quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[month]"
+                      dataType="i4"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input].ExternalColumns[day]"
+                      dataType="i4"
+                      name="day" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Silver_Dim_Date_Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    ROW_NUMBER() OVER (ORDER BY sls_order_dt) AS date_key,
+    sls_order_dt AS full_date,
+    YEAR(sls_order_dt) AS year,
+    DATEPART(QUARTER, sls_order_dt) AS quarter,
+    MONTH(sls_order_dt) AS month,
+    DAY(sls_order_dt) AS day
+FROM (
+    SELECT DISTINCT sls_order_dt
+    FROM SilverSSIS.dbo.crm_sales_details
+) AS DistinctDates</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Connections[OleDbConnection]"
+                  connectionManagerID="{79C93182-24F9-49D2-8B06-225CDA7EC52A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.SilverSSIS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[full_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[full_date]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[full_date]"
+                      name="full_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[quarter]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[quarter]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[quarter]"
+                      name="quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[month]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[month]"
+                      name="month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[day]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[day]"
+                      name="day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[date_key]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[date_key]"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].Columns[date_key]"
+                      name="date_key"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[full_date]"
+                      dataType="dbTimeStamp"
+                      name="full_date" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      dataType="i4"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[quarter]"
+                      dataType="i4"
+                      name="quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[month]"
+                      dataType="i4"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[day]"
+                      dataType="i4"
+                      name="day" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output].ExternalColumns[date_key]"
+                      dataType="i8"
+                      name="date_key" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[date_key]"
+                      dataType="i8"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[date_key]"
+                      name="date_key" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[full_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[full_date]"
+                      name="full_date" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[year]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[quarter]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[quarter]"
+                      name="quarter" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[month]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[month]"
+                      name="month" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[day]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[day]"
+                      name="day" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Load_Gold_Dim_Date.Paths[OLE DB Source Output]"
+              endId="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Gold_Dim_Date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3E51B609-8C72-4B93-B2D0-DE8E8A741988}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Gold_Dim_Date"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2EDE3265-8D2E-42F6-841E-B38C8936261A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DIM_DATE" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A353BD77-094A-49B7-845A-10034007F782}"
+      DTS:From="Package\SQL_Truncate_Gold_Dim_Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Load_Gold_Dim_Date" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="224,41.6"
+          Id="Package\SQL_Truncate_Gold_Dim_Date"
+          TopLeft="446.214286652451,33.7941176222579" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\DF_Load_Gold_Dim_Date"
+          TopLeft="446.214286588588,166.264705767733" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="558.214286652451,75.3941176222579">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.4000000638622,90.8705881454747"
+              Start="0,0"
+              End="-12.4000000638622,83.3705881454747">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.4352940727373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.4352940727373"
+                    Point2="0,45.4352940727373"
+                    Point3="-4,45.4352940727373" />
+                  <mssgle:LineSegment
+                    End="-8.40000006386219,45.4352940727373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.40000006386219,45.4352940727373"
+                    Point2="-12.4000000638622,45.4352940727373"
+                    Point3="-12.4000000638622,49.4352940727373" />
+                  <mssgle:LineSegment
+                    End="-12.4000000638622,83.3705881454747" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Load_Gold_Dim_Date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source"
+          TopLeft="94.78571447578,107.970588145475" />
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination"
+          TopLeft="784.785715880747,135.676470500427" />
+        <EdgeLayout
+          Id="Package\DF_Load_Gold_Dim_Date.Paths[OLE DB Source Output]"
+          TopLeft="289.18571447578,128.770588145475">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="495.600001404967,27.705882354952"
+              Start="0,0"
+              End="488.100001404967,27.705882354952">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="243.800000702483,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="243.800000702483,0"
+                    Point2="247.800000702483,0"
+                    Point3="247.800000702483,4" />
+                  <mssgle:LineSegment
+                    End="247.800000702483,23.705882354952" />
+                  <mssgle:CubicBezierSegment
+                    Point1="247.800000702483,23.705882354952"
+                    Point2="247.800000702483,27.705882354952"
+                    Point3="251.800000702483,27.705882354952" />
+                  <mssgle:LineSegment
+                    End="488.100001404967,27.705882354952" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Load_Gold_Dim_Date\Silver_Dim_Date_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Load_Gold_Dim_Date\Gold_Dim_Date_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

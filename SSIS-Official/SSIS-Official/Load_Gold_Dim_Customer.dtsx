@@ -1,0 +1,609 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2025 3:59:54 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{68275C01-34A4-4BED-8F89-85CD1760926A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{9FE5FC46-2568-4167-9BE2-4AF8E3539E59}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Load_Gold_Dim_Customer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9ED6E52C-5169-4AC9-88FE-84010DF1121C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Load_Gold_Dim_Customer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Gold_Dim_Customer_Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{2EDE3265-8D2E-42F6-841E-B38C8936261A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.Gold_SSIS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].Columns[cst_id]"
+                      cachedDataType="i4"
+                      cachedName="cst_id"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_id]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_id]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].Columns[cst_key]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cst_key"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_key]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_key]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].Columns[cst_fullname]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="cst_fullname"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_fullname]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_fullname]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].Columns[cst_marital_status]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="cst_marital_status"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_marital_status]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_marital_status]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].Columns[cst_gndr]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="cst_gndr"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_gndr]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_gndr]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].Columns[cst_birth_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="cst_birth_date"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_birth_date]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_birth_date]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      dataType="i4"
+                      name="customer_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_id]"
+                      dataType="i4"
+                      name="cst_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_key]"
+                      dataType="wstr"
+                      length="50"
+                      name="cst_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_fullname]"
+                      dataType="wstr"
+                      length="100"
+                      name="cst_fullname" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_marital_status]"
+                      dataType="wstr"
+                      length="10"
+                      name="cst_marital_status" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_gndr]"
+                      dataType="wstr"
+                      length="10"
+                      name="cst_gndr" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cst_birth_date]"
+                      dataType="dbTimeStamp"
+                      name="cst_birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="100"
+                      name="country" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Silver_Dim_Customer_Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT c.cst_id, c.cst_key, c.cst_firstname + ' ' + c.cst_lastname AS cst_fullname, c.cst_marital_status, c.cst_gndr, e.bdate AS cst_birth_date, l.cntry AS country
+FROM     SilverSSIS.dbo.crm_cust_info c LEFT JOIN
+                  SilverSSIS.dbo.erp_cust e ON c.cst_key = e.cid LEFT JOIN
+                  SilverSSIS.dbo.erp_loc l ON c.cst_key = l.cid;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Connections[OleDbConnection]"
+                  connectionManagerID="{79C93182-24F9-49D2-8B06-225CDA7EC52A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.SilverSSIS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_id]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_id]"
+                      name="cst_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_key]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_key]"
+                      length="50"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_key]"
+                      name="cst_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_fullname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_fullname]"
+                      length="101"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_fullname]"
+                      name="cst_fullname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_marital_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_marital_status]"
+                      length="10"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_marital_status]"
+                      name="cst_marital_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_gndr]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_gndr]"
+                      length="10"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_gndr]"
+                      name="cst_gndr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_birth_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_birth_date]"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[cst_birth_date]"
+                      name="cst_birth_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      length="100"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_id]"
+                      dataType="i4"
+                      name="cst_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_key]"
+                      dataType="wstr"
+                      length="50"
+                      name="cst_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_fullname]"
+                      dataType="wstr"
+                      length="101"
+                      name="cst_fullname" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_marital_status]"
+                      dataType="wstr"
+                      length="10"
+                      name="cst_marital_status" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_gndr]"
+                      dataType="wstr"
+                      length="10"
+                      name="cst_gndr" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[cst_birth_date]"
+                      dataType="dbTimeStamp"
+                      name="cst_birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="100"
+                      name="country" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_id]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_id]"
+                      name="cst_id" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_key]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_key]"
+                      name="cst_key" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_fullname]"
+                      dataType="wstr"
+                      length="101"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_fullname]"
+                      name="cst_fullname" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_marital_status]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_marital_status]"
+                      name="cst_marital_status" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_gndr]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_gndr]"
+                      name="cst_gndr" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_birth_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[cst_birth_date]"
+                      name="cst_birth_date" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[country]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Load_Gold_Dim_Customer.Paths[OLE DB Source Output]"
+              endId="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Gold_Dim_Customer"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1DB48249-01D9-424F-9B7E-0EDDF93F31B6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Gold_Dim_Customer"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2EDE3265-8D2E-42F6-841E-B38C8936261A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Dim_Customer;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0038FFEA-C1EC-4E02-A384-843A54804164}"
+      DTS:From="Package\SQL_Truncate_Gold_Dim_Customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Load_Gold_Dim_Customer" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="247.2,41.6"
+          Id="Package\SQL_Truncate_Gold_Dim_Customer"
+          TopLeft="366.214286482152,18.499999988605" />
+        <NodeLayout
+          Size="221.6,41.6"
+          Id="Package\DF_Load_Gold_Dim_Customer"
+          TopLeft="373.357143576352,130.323529328648" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="486.985715029252,60.099999988605">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.2235293400432"
+              Start="0,0"
+              End="0,62.7235293400432">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.7235293400432" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Load_Gold_Dim_Customer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source"
+          TopLeft="384.071429377308,36.0882352673059" />
+        <NodeLayout
+          Size="233.6,41.6"
+          Id="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination"
+          TopLeft="450.500000883426,209.852941023643" />
+        <EdgeLayout
+          Id="Package\DF_Load_Gold_Dim_Customer.Paths[OLE DB Source Output]"
+          TopLeft="492.471429377308,77.6882352673059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.8285715061184,132.164705756338"
+              Start="0,0"
+              End="74.8285715061184,124.664705756338">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.0823528781688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,62.0823528781688"
+                    Point2="0,66.0823528781688"
+                    Point3="4,66.0823528781688" />
+                  <mssgle:LineSegment
+                    End="70.8285715061184,66.0823528781688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.8285715061184,66.0823528781688"
+                    Point2="74.8285715061184,66.0823528781688"
+                    Point3="74.8285715061184,70.0823528781688" />
+                  <mssgle:LineSegment
+                    End="74.8285715061184,124.664705756338" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Load_Gold_Dim_Customer\Silver_Dim_Customer_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Load_Gold_Dim_Customer\Gold_Dim_Customer_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
