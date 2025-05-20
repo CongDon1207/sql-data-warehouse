@@ -1,0 +1,692 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2025 2:39:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{A11BE7FB-AE31-4859-947E-924B5F4B4B26}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{AAD43BF3-16ED-4C47-AF82-3BF814BDB54D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DATAGUY.BronzeDB 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{40D786FE-59FA-4C38-AA21-20B16B921D91}"
+      DTS:ObjectName="DATAGUY.BronzeDB 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DATAGUY;Initial Catalog=BronzeDB;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{40D786FE-59FA-4C38-AA21-20B16B921D91}DATAGUY.BronzeDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ERP Customer]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{BE4D8EEE-C805-4ECE-AF5F-E689B6E1E22A}"
+      DTS:ObjectName="ERP Customer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\quoch\Downloads\sql-data-warehouse\data\source_erp\CUST_AZ12.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CID"
+              DTS:DTSID="{410119C2-82C6-4ACD-B553-02860F608B15}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BDATE"
+              DTS:DTSID="{88205D81-1781-4AAD-9B55-295703DFE0CC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GEN"
+              DTS:DTSID="{E2DD8E58-F0BF-41D9-97F6-1B2809B7FB22}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Import_Bronze_erp_cust"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3595F40B-EA8B-4C48-BD99-2EEC802BE0BA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Import_Bronze_erp_cust"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion Change Data Type"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[CID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CID"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[CID]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[BDATE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="BDATE"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[BDATE]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[GEN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="GEN"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[GEN]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of CID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of CID]"
+                      name="Copy of CID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[CID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of BDATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of BDATE]"
+                      name="Copy of BDATE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[BDATE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of GEN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of GEN]"
+                      name="Copy of GEN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[GEN]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST ERP Customer Bronze"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[erp_cust]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATAGUY.BronzeDB 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATAGUY.BronzeDB 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].Columns[Copy of CID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of CID"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of CID]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].Columns[Copy of BDATE]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of BDATE"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].ExternalColumns[bdate]"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of BDATE]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].Columns[Copy of GEN]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Copy of GEN"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].ExternalColumns[gen]"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of GEN]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                      dataType="wstr"
+                      length="50"
+                      name="cid" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].ExternalColumns[bdate]"
+                      dataType="dbTimeStamp"
+                      name="bdate" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input].ExternalColumns[gen]"
+                      dataType="wstr"
+                      length="10"
+                      name="gen" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="SRC ERP Customer"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ERP Customer]"
+                  connectionManagerRefId="Package.ConnectionManagers[ERP Customer]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[CID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].ExternalColumns[CID]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[CID]"
+                      name="CID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[BDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].ExternalColumns[BDATE]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[BDATE]"
+                      name="BDATE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[GEN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].ExternalColumns[GEN]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].Columns[GEN]"
+                      name="GEN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].ExternalColumns[CID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CID" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].ExternalColumns[BDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="BDATE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output].ExternalColumns[GEN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="GEN" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Import_Bronze_erp_cust.Paths[Data Conversion Output]"
+              endId="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DF_Import_Bronze_erp_cust.Paths[Flat File Source Output]"
+              endId="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Bronze_erp_cust"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C2951188-1B2B-45D2-ADC5-273834663266}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Bronze_erp_cust"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7B80C1D0-39CA-4FEB-9BEE-B5C92460E43C}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE erp_cust;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1C697CAF-486E-4B1B-BA3D-EE953F724D6C}"
+      DTS:From="Package\SQL_Truncate_Bronze_erp_cust"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Import_Bronze_erp_cust" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="228.8,41.6"
+          Id="Package\SQL_Truncate_Bronze_erp_cust"
+          TopLeft="197.642857551879,68.9705881796597" />
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\DF_Import_Bronze_erp_cust"
+          TopLeft="229.071428983491,194.558823389991" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="312.042857551879,110.57058817966">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.8285714316126,83.9882352103309"
+              Start="0,0"
+              End="23.8285714316126,76.4882352103309">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.9941176051654" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.9941176051654"
+                    Point2="0,41.9941176051654"
+                    Point3="4,41.9941176051654" />
+                  <mssgle:LineSegment
+                    End="19.8285714316126,41.9941176051654" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.8285714316126,41.9941176051654"
+                    Point2="23.8285714316126,41.9941176051654"
+                    Point3="23.8285714316126,45.9941176051654" />
+                  <mssgle:LineSegment
+                    End="23.8285714316126,76.4882352103309" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Import_Bronze_erp_cust">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\DF_Import_Bronze_erp_cust\DST ERP Customer Bronze"
+          TopLeft="83.999999642372,288.999996587634" />
+        <NodeLayout
+          Size="246.4,41.6"
+          Id="Package\DF_Import_Bronze_erp_cust\Data Conversion Change Data Type"
+          TopLeft="63.999999940395,168.999998375773" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\DF_Import_Bronze_erp_cust\SRC ERP Customer"
+          TopLeft="60,60" />
+        <EdgeLayout
+          Id="Package\DF_Import_Bronze_erp_cust.Paths[Flat File Source Output]"
+          TopLeft="143.6,101.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.599999940395,67.399998375773"
+              Start="0,0"
+              End="43.599999940395,59.899998375773">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.6999991878865" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.6999991878865"
+                    Point2="0,33.6999991878865"
+                    Point3="4,33.6999991878865" />
+                  <mssgle:LineSegment
+                    End="39.599999940395,33.6999991878865" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.599999940395,33.6999991878865"
+                    Point2="43.599999940395,33.6999991878865"
+                    Point3="43.599999940395,37.6999991878865" />
+                  <mssgle:LineSegment
+                    End="43.599999940395,59.899998375773" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Import_Bronze_erp_cust.Paths[Data Conversion Output]"
+          TopLeft="186.399999791384,210.599998375773">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.399998211861"
+              Start="0,0"
+              End="0,70.899998211861">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.899998211861" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -15,6 +15,60 @@
 
 # Mono auto generated files
 mono_crash.*
+.vs/
+
+# Build outputs
+**/bin/
+**/obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code workspace
+.vscode/
+
+# Backup and temporary files
+*.tmp
+*.bak
+*.log
+*.ncb
+*.sdf
+*.cache
+*.dbmdl
+
+# SSIS auto-generated files
+*.dtproj.user
+*.designer.cs
+*.designer.vb
+
+# Packages folders (if using NuGet)
+packages/
+
+# SQL Server Data Tools specific
+*.ispac
+*.rdl.data
+*.rptproj.user
+*.rptproj.rsuser
+
+# Local test result files
+TestResults/
+
+# Other common Visual Studio files
+*.vspscc
+*.vssscc
+*.pdb
+*.vssscc
+.vs/
+
+# SSIS project deployment files
+*.deploymanifest
+*.SSISDeploymentManifest
+
+# DS_Store (Mac)
+.DS_Store
 
 # Build results
 [Dd]ebug/

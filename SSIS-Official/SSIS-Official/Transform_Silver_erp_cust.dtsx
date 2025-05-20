@@ -1,0 +1,1201 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2025 3:36:21 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{7326B399-19E3-4AAB-A778-9EF9822B0C0C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{164980F6-B0B4-4787-A047-D63B81A4EB50}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D18CFEB5-46FB-44E0-9A01-FBB7D403FEB5}"
+      DTS:ObjectName="DATAGUY.SilverSSIS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DATAGUY;Initial Catalog=SilverSSIS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{D18CFEB5-46FB-44E0-9A01-FBB7D403FEB5}DATAGUY.SilverSSIS;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Transform_Silver_erp_cust"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7D9F7FE8-7B18-48C5-8C31-14B7BBCB25D1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Transform_Silver_erp_cust"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split NULL"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Inputs[Conditional Split Input].Columns[gen]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="gen"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Outputs[Gen not null]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Gen not null"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(gen)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split NULL Value"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Inputs[Conditional Split Input].Columns[cid]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cid"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[cid]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[cid]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(cid)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_cust\Derived_Gen"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived_Gen"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Inputs[Derived Column Input].Columns[gen]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="gen"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]} == "Male" ? "M" : #{Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]} == "Female" ? "F" : #{Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">gen == "Male" ? "M" : gen == "Female" ? "F" : gen</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_cust\Derived_SubString"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived_SubString"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Inputs[Derived Column Input].Columns[cid]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cid"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[cid]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([REPLACE](#{Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[cid]},"NAS",""))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(REPLACE(cid,"NAS",""))</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST-ERP Customer Silver"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[erp_cust]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].Columns[cid]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cid"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[cid]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].Columns[bdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="bdate"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].ExternalColumns[bdate]"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[bdate]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].Columns[gen]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="gen"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].ExternalColumns[gen]"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                      dataType="wstr"
+                      length="50"
+                      name="cid" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].ExternalColumns[bdate]"
+                      dataType="dbTimeStamp"
+                      name="bdate" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input].ExternalColumns[gen]"
+                      dataType="wstr"
+                      length="10"
+                      name="gen" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_FK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[crm_cust_info]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[crm_cust_info]) [refTable]
+where [refTable].[cst_key] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="cst_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_key" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_firstname" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_lastname" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_marital_status" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_gndr" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_create_date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Transform_Silver_erp_cust\2:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Inputs[Lookup Input].Columns[cid]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cid"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[cid]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">cst_key</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC ERP Customer Bronze"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[erp_cust]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Connections[OleDbConnection]"
+                  connectionManagerID="{7B80C1D0-39CA-4FEB-9BEE-B5C92460E43C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.BronzeDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[cid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].ExternalColumns[cid]"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[cid]"
+                      name="cid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[bdate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].ExternalColumns[bdate]"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[bdate]"
+                      name="bdate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].ExternalColumns[gen]"
+                      length="10"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].Columns[gen]"
+                      name="gen"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].ExternalColumns[cid]"
+                      dataType="wstr"
+                      length="50"
+                      name="cid" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].ExternalColumns[bdate]"
+                      dataType="dbTimeStamp"
+                      name="bdate" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output].ExternalColumns[gen]"
+                      dataType="wstr"
+                      length="10"
+                      name="gen" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[cid]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[cid]"
+                      name="cid" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[bdate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[bdate]"
+                      name="bdate" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[gen]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[gen]"
+                      name="gen" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Transform_Silver_erp_cust.Paths[Conditional Split Default Output]"
+              endId="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver.Inputs[OLE DB Destination Input]"
+              name="Conditional Split Default Output"
+              startId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_erp_cust.Paths[Conditional Split Default Output1]"
+              endId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Inputs[Derived Column Input]"
+              name="Conditional Split Default Output"
+              startId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_erp_cust.Paths[Derived Column Output]"
+              endId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_erp_cust.Paths[Derived Column Output1]"
+              endId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\DF_Transform_Silver_erp_cust\Derived_SubString.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_erp_cust.Paths[Lookup Match Output]"
+              endId="Package\DF_Transform_Silver_erp_cust\Derived_Gen.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Transform_Silver_erp_cust\Lookup_FK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_erp_cust.Paths[OLE DB Source Output]"
+              endId="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Silver_erp_cust"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7B3A4EAD-0DCE-4E20-9464-2F411A161830}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Silver_erp_cust"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{79C93182-24F9-49D2-8B06-225CDA7EC52A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE erp_cust" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CDA5A682-40E5-43E5-93BA-7BEE41A1BA89}"
+      DTS:From="Package\SQL_Truncate_Silver_erp_cust"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Transform_Silver_erp_cust" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="222.4,41.6"
+          Id="Package\SQL_Truncate_Silver_erp_cust"
+          TopLeft="306.214286354427,61.3235293628332" />
+        <NodeLayout
+          Size="223.2,41.6"
+          Id="Package\DF_Transform_Silver_erp_cust"
+          TopLeft="349.785714954746,147.911764607349" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="417.414286354427,102.923529362833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.9714286003186,44.9882352445159"
+              Start="0,0"
+              End="43.9714286003186,37.4882352445159">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.4941176222579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.4941176222579"
+                    Point2="0,22.4941176222579"
+                    Point3="4,22.4941176222579" />
+                  <mssgle:LineSegment
+                    End="39.9714286003186,22.4941176222579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.9714286003186,22.4941176222579"
+                    Point2="43.9714286003186,22.4941176222579"
+                    Point3="43.9714286003186,26.4941176222579" />
+                  <mssgle:LineSegment
+                    End="43.9714286003186,37.4882352445159" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Transform_Silver_erp_cust">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="130.4,41.6"
+          Id="Package\DF_Transform_Silver_erp_cust\Lookup_FK"
+          TopLeft="638.142858505552,125.733332163446" />
+        <NodeLayout
+          Size="212,41.6"
+          Id="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL Value"
+          TopLeft="326.428571995728,125.733332645543" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver"
+          TopLeft="1022.57142250574,254.661431456162" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\DF_Transform_Silver_erp_cust\Derived_Gen"
+          TopLeft="762.999993973544,268.321566143993" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\DF_Transform_Silver_erp_cust\Conditional Split NULL"
+          TopLeft="846.579363755932,121.762740050756" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\DF_Transform_Silver_erp_cust\Derived_SubString"
+          TopLeft="434.857135787302,293.235293913207" />
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_cust.Paths[Lookup Match Output]"
+          TopLeft="723.742858505552,167.333332163446">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86.9904688013254,100.988233980547"
+              Start="0,0"
+              End="86.9904688013254,93.4882339805467">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5416640538161" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.5416640538161"
+                    Point2="0,50.5416640538161"
+                    Point3="4,50.5416640538161" />
+                  <mssgle:LineSegment
+                    End="82.9904688013254,50.5416640538161" />
+                  <mssgle:CubicBezierSegment
+                    Point1="82.9904688013254,50.5416640538161"
+                    Point2="86.9904688013254,50.5416640538161"
+                    Point3="86.9904688013254,54.5416640538161" />
+                  <mssgle:LineSegment
+                    End="86.9904688013254,93.4882339805467" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-4.69615231808731,55.5416640538161,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_cust.Paths[Derived Column Output]"
+          TopLeft="854.466660640211,268.321566143993">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.2460364490547,-104.958826093236"
+              Start="0,0"
+              End="54.2460364490547,-97.4588260932364">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-48.6535832352087" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-48.6535832352087"
+                    Point2="0,-52.6535832352087"
+                    Point3="4,-52.6535832352087" />
+                  <mssgle:LineSegment
+                    End="50.2460364490547,-52.6535832352087" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.2460364490547,-52.6535832352087"
+                    Point2="54.2460364490547,-52.6535832352087"
+                    Point3="54.2460364490547,-56.6535832352087" />
+                  <mssgle:LineSegment
+                    End="54.2460364490547,-97.4588260932364" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_cust.Paths[Derived Column Output1]"
+          TopLeft="543.923802453968,293.235293913207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="139.019056051584,-125.901961749761"
+              Start="0,0"
+              End="139.019056051584,-118.401961749761">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-58.7512287287941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-58.7512287287941"
+                    Point2="0,-62.7512287287941"
+                    Point3="4,-62.7512287287941" />
+                  <mssgle:LineSegment
+                    End="135.019056051584,-62.7512287287941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="135.019056051584,-62.7512287287941"
+                    Point2="139.019056051584,-62.7512287287941"
+                    Point3="139.019056051584,-66.7512287287941" />
+                  <mssgle:LineSegment
+                    End="139.019056051584,-118.401961749761" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_cust.Paths[Conditional Split Default Output]"
+          TopLeft="966.846030422599,163.362740050756">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="154.525392083144,91.2986914054057"
+              Start="0,0"
+              End="154.525392083144,83.7986914054057">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.9958175607992" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.9958175607992"
+                    Point2="0,36.9958175607992"
+                    Point3="4,36.9958175607992" />
+                  <mssgle:LineSegment
+                    End="150.525392083144,36.9958175607992" />
+                  <mssgle:CubicBezierSegment
+                    Point1="150.525392083144,36.9958175607992"
+                    Point2="154.525392083144,36.9958175607992"
+                    Point3="154.525392083144,40.9958175607992" />
+                  <mssgle:LineSegment
+                    End="154.525392083144,83.7986914054057" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="6.64878979157191,41.9958175607992,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_cust.Paths[Conditional Split Default Output1]"
+          TopLeft="432.428571995728,167.333332645543">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.961897124907,125.901961267664"
+              Start="0,0"
+              End="58.961897124907,118.401961267664">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.8182946863345" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,70.8182946863345"
+                    Point2="0,74.8182946863345"
+                    Point3="4,74.8182946863345" />
+                  <mssgle:LineSegment
+                    End="54.961897124907,74.8182946863345" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.961897124907,74.8182946863345"
+                    Point2="58.961897124907,74.8182946863345"
+                    Point3="58.961897124907,78.8182946863345" />
+                  <mssgle:LineSegment
+                    End="58.961897124907,118.401961267664" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-61.0183092500465,79.8182946863345,180.998515625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze"
+          TopLeft="50.5000000957931,238.735293913207" />
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_cust.Paths[OLE DB Source Output]"
+          TopLeft="152.100000095793,238.735293913207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="246.328571899935,-71.4019612676643"
+              Start="0,0"
+              End="246.328571899935,-63.9019612676643">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-38.5202690695079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-38.5202690695079"
+                    Point2="0,-42.5202690695079"
+                    Point3="4,-42.5202690695079" />
+                  <mssgle:LineSegment
+                    End="242.328571899935,-42.5202690695079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="242.328571899935,-42.5202690695079"
+                    Point2="246.328571899935,-42.5202690695079"
+                    Point3="246.328571899935,-46.5202690695079" />
+                  <mssgle:LineSegment
+                    End="246.328571899935,-63.9019612676643" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="107.710692199967,-37.5202690695079,30.9071875,9.568359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Transform_Silver_erp_cust\DST-ERP Customer Silver">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Transform_Silver_erp_cust\SRC ERP Customer Bronze">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

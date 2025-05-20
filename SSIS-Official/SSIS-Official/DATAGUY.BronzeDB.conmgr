@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DATAGUY.BronzeDB"
+  DTS:DTSID="{7B80C1D0-39CA-4FEB-9BEE-B5C92460E43C}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DATAGUY;Initial Catalog=BronzeDB;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-SSIS-Official-{7B80C1D0-39CA-4FEB-9BEE-B5C92460E43C}DATAGUY.BronzeDB;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
