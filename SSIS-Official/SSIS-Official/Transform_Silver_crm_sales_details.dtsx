@@ -1,0 +1,1729 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2025 3:33:05 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{E6876F8C-19E6-4ADA-BF83-E6DFADE3EB5D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{5BBD300C-0F78-4CB8-96BD-CB1DB96D1161}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D18CFEB5-46FB-44E0-9A01-FBB7D403FEB5}"
+      DTS:ObjectName="DATAGUY.SilverSSIS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DATAGUY;Initial Catalog=SilverSSIS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{D18CFEB5-46FB-44E0-9A01-FBB7D403FEB5}DATAGUY.SilverSSIS;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Transform_Silver_crm_sales_details"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{42449266-445E-45C6-A8FF-9EAD6B1C8D3F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Transform_Silver_crm_sales_details"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split NULL Value"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input].Columns[sls_ord_num]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sls_ord_num"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ord_num]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input].Columns[sls_prd_key]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sls_prd_key"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_prd_key]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input].Columns[sls_cust_id]"
+                      cachedDataType="i4"
+                      cachedName="sls_cust_id"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_cust_id]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input].Columns[sls_order_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_order_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input].Columns[sls_ship_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_ship_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input].Columns[sls_due_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_due_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Outputs[ISNULL]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="ISNULL"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ord_num]}) || [ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_prd_key]}) || [ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_cust_id]}) || [ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]}) || [ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]}) || [ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(sls_ord_num) || ISNULL(sls_prd_key) || ISNULL(sls_cust_id) || ISNULL(sls_order_dt) || ISNULL(sls_ship_dt) || ISNULL(sls_due_dt)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived_Convert_INT_to_DATETIME"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Inputs[Derived Column Input].Columns[sls_order_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_order_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Inputs[Derived Column Input].Columns[sls_ship_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_ship_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Inputs[Derived Column Input].Columns[sls_due_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_due_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Order Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Order Date]"
+                      name="Order Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEN]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]}) == 8 &amp;&amp; [ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]}) ==  FALSE  ? [SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]},1,4) + "-" + [SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]},5,2) + "-" + [SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]},7,2) : "1900-01-01"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEN((DT_STR,8,1252)sls_order_dt) == 8 &amp;&amp; ISNULL(sls_order_dt) ==  FALSE  ? SUBSTRING((DT_STR,8,1252)sls_order_dt,1,4) + "-" + SUBSTRING((DT_STR,8,1252)sls_order_dt,5,2) + "-" + SUBSTRING((DT_STR,8,1252)sls_order_dt,7,2) : "1900-01-01"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Due Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Due Date]"
+                      name="Due Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]}) ==  FALSE  &amp;&amp; [LEN]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]}) == 8) ? (DT_DATE)([SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]},1,4) + "-" + [SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]},5,2) + "-" + [SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]},7,2)) : (DT_DATE)"1900-01-01"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(ISNULL(sls_due_dt) ==  FALSE  &amp;&amp; LEN((DT_STR,8,1252)sls_due_dt) == 8) ? (DT_DATE)(SUBSTRING((DT_STR,8,1252)sls_due_dt,1,4) + "-" + SUBSTRING((DT_STR,8,1252)sls_due_dt,5,2) + "-" + SUBSTRING((DT_STR,8,1252)sls_due_dt,7,2)) : (DT_DATE)"1900-01-01"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Ship Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Ship Date]"
+                      name="Ship Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([ISNULL](#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]}) ==  FALSE  &amp;&amp; [LEN]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]}) == 8) ? (DT_DATE)([SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]},1,4) + "-" + [SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]},5,2) + "-" + [SUBSTRING]((DT_STR,8,1252)#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]},7,2)) : (DT_DATE)"1900-01-01"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(ISNULL(sls_ship_dt) ==  FALSE  &amp;&amp; LEN((DT_STR,8,1252)sls_ship_dt) == 8) ? (DT_DATE)(SUBSTRING((DT_STR,8,1252)sls_ship_dt,1,4) + "-" + SUBSTRING((DT_STR,8,1252)sls_ship_dt,5,2) + "-" + SUBSTRING((DT_STR,8,1252)sls_ship_dt,7,2)) : (DT_DATE)"1900-01-01"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST_Silver_CRM_Sales_Details"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[crm_sales_details]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[sls_ord_num]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sls_ord_num"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_ord_num]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ord_num]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[sls_prd_key]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sls_prd_key"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_prd_key]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_prd_key]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[sls_cust_id]"
+                      cachedDataType="i4"
+                      cachedName="sls_cust_id"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_cust_id]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_cust_id]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[sls_sales]"
+                      cachedDataType="i4"
+                      cachedName="sls_sales"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_sales]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_sales]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[sls_quantity]"
+                      cachedDataType="i4"
+                      cachedName="sls_quantity"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_quantity]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_quantity]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[sls_price]"
+                      cachedDataType="i4"
+                      cachedName="sls_price"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_price]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_price]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[Order Date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Order Date"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_order_dt]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Order Date]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[Ship Date]"
+                      cachedDataType="date"
+                      cachedName="Ship Date"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_ship_dt]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Ship Date]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].Columns[Due Date]"
+                      cachedDataType="date"
+                      cachedName="Due Date"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_due_dt]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output].Columns[Due Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_ord_num]"
+                      dataType="wstr"
+                      length="50"
+                      name="sls_ord_num" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_prd_key]"
+                      dataType="wstr"
+                      length="50"
+                      name="sls_prd_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_cust_id]"
+                      dataType="i4"
+                      name="sls_cust_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_order_dt]"
+                      dataType="dbTimeStamp"
+                      name="sls_order_dt" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_ship_dt]"
+                      dataType="dbTimeStamp"
+                      name="sls_ship_dt" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_due_dt]"
+                      dataType="dbTimeStamp"
+                      name="sls_due_dt" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_sales]"
+                      dataType="i4"
+                      name="sls_sales" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_quantity]"
+                      dataType="i4"
+                      name="sls_quantity" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input].ExternalColumns[sls_price]"
+                      dataType="i4"
+                      name="sls_price" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_FK_Customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[crm_cust_info]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[crm_cust_info]) [refTable]
+where [refTable].[cst_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="cst_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_key" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_firstname" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_lastname" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_marital_status" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_gndr" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cst_create_date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_cust_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Inputs[Lookup Input].Columns[sls_cust_id]"
+                      cachedDataType="i4"
+                      cachedName="sls_cust_id"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_cust_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">cst_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_FK_Product"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[crm_prd_info]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[crm_prd_info]) [refTable]
+where [refTable].[prd_key] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="prd_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="prd_key" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="prd_nm" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="prd_cost" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="prd_line" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="prd_start_dt" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="prd_end_dt" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_prd_key]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Inputs[Lookup Input].Columns[sls_prd_key]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sls_prd_key"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_prd_key]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">prd_key</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort _ Delete Duplicate Value"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_ord_num]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sls_ord_num"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_ord_num]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_prd_key]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sls_prd_key"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_prd_key]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_cust_id]"
+                      cachedDataType="i4"
+                      cachedName="sls_cust_id"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_cust_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_order_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_order_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_order_dt]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_ship_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_ship_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_ship_dt]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_due_dt]"
+                      cachedDataType="i4"
+                      cachedName="sls_due_dt"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_due_dt]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_sales]"
+                      cachedDataType="i4"
+                      cachedName="sls_sales"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_sales]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_quantity]"
+                      cachedDataType="i4"
+                      cachedName="sls_quantity"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_quantity]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input].Columns[sls_price]"
+                      cachedDataType="i4"
+                      cachedName="sls_price"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_price]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ord_num]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ord_num]"
+                      name="sls_ord_num"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_ord_num]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_prd_key]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_prd_key]"
+                      name="sls_prd_key">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_prd_key]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_cust_id]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_cust_id]"
+                      name="sls_cust_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_cust_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_order_dt]"
+                      name="sls_order_dt">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_order_dt]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_ship_dt]"
+                      name="sls_ship_dt">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_ship_dt]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_due_dt]"
+                      name="sls_due_dt">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_due_dt]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_sales]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_sales]"
+                      name="sls_sales">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_sales]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_quantity]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_quantity]"
+                      name="sls_quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_quantity]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_price]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output].Columns[sls_price]"
+                      name="sls_price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_price]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC Sales Bronze to Silver"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[crm_sales_details]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Connections[OleDbConnection]"
+                  connectionManagerID="{7B80C1D0-39CA-4FEB-9BEE-B5C92460E43C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.BronzeDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_ord_num]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_ord_num]"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_ord_num]"
+                      name="sls_ord_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_prd_key]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_prd_key]"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_prd_key]"
+                      name="sls_prd_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_cust_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_cust_id]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_cust_id]"
+                      name="sls_cust_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_order_dt]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_order_dt]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_order_dt]"
+                      name="sls_order_dt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_ship_dt]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_ship_dt]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_ship_dt]"
+                      name="sls_ship_dt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_due_dt]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_due_dt]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_due_dt]"
+                      name="sls_due_dt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_sales]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_sales]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_sales]"
+                      name="sls_sales"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_quantity]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_quantity]"
+                      name="sls_quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_price]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_price]"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].Columns[sls_price]"
+                      name="sls_price"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_ord_num]"
+                      dataType="wstr"
+                      length="50"
+                      name="sls_ord_num" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_prd_key]"
+                      dataType="wstr"
+                      length="50"
+                      name="sls_prd_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_cust_id]"
+                      dataType="i4"
+                      name="sls_cust_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_order_dt]"
+                      dataType="i4"
+                      name="sls_order_dt" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_ship_dt]"
+                      dataType="i4"
+                      name="sls_ship_dt" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_due_dt]"
+                      dataType="i4"
+                      name="sls_due_dt" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_sales]"
+                      dataType="i4"
+                      name="sls_sales" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_quantity]"
+                      dataType="i4"
+                      name="sls_quantity" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output].ExternalColumns[sls_price]"
+                      dataType="i4"
+                      name="sls_price" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_ord_num]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_ord_num]"
+                      name="sls_ord_num" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_prd_key]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_prd_key]"
+                      name="sls_prd_key" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_cust_id]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_cust_id]"
+                      name="sls_cust_id" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_order_dt]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_order_dt]"
+                      name="sls_order_dt" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_ship_dt]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_ship_dt]"
+                      name="sls_ship_dt" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_due_dt]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_due_dt]"
+                      name="sls_due_dt" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_sales]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_sales]"
+                      name="sls_sales" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_quantity]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_quantity]"
+                      name="sls_quantity" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_price]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[sls_price]"
+                      name="sls_price" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Transform_Silver_crm_sales_details.Paths[Conditional Split Default Output]"
+              endId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Inputs[Derived Column Input]"
+              name="Conditional Split Default Output"
+              startId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_crm_sales_details.Paths[Derived Column Output]"
+              endId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_crm_sales_details.Paths[Lookup Match Output]"
+              endId="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_crm_sales_details.Paths[Lookup Match Output1]"
+              endId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_crm_sales_details.Paths[OLE DB Source Output]"
+              endId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_crm_sales_details.Paths[Sort Output]"
+              endId="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value.Inputs[Conditional Split Input]"
+              name="Sort Output"
+              startId="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Silver_crm_sales_details"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{20B2E179-5B9B-4CB1-BB8D-953CA158BAE0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Silver_crm_sales_details"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{79C93182-24F9-49D2-8B06-225CDA7EC52A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE crm_sales_details" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CB540E01-EC2D-40E4-8089-993069F3EE8D}"
+      DTS:From="Package\SQL_Truncate_Silver_crm_sales_details"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Transform_Silver_crm_sales_details" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="264.8,41.6"
+          Id="Package\SQL_Truncate_Silver_crm_sales_details"
+          TopLeft="445.500000936645,86.5588234583605" />
+        <NodeLayout
+          Size="265.6,41.6"
+          Id="Package\DF_Transform_Silver_crm_sales_details"
+          TopLeft="486.214286673738,193.794117508308" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="577.900000936645,128.158823458361">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.1142857370935,65.6352940499474"
+              Start="0,0"
+              End="41.1142857370935,58.1352940499474">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8176470249737" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.8176470249737"
+                    Point2="0,32.8176470249737"
+                    Point3="4,32.8176470249737" />
+                  <mssgle:LineSegment
+                    End="37.1142857370935,32.8176470249737" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.1142857370935,32.8176470249737"
+                    Point2="41.1142857370935,32.8176470249737"
+                    Point3="41.1142857370935,36.8176470249737" />
+                  <mssgle:LineSegment
+                    End="41.1142857370935,58.1352940499474" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Transform_Silver_crm_sales_details">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\DF_Transform_Silver_crm_sales_details\Sort _ Delete Duplicate Value"
+          TopLeft="739.555546770493,60" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Product"
+          TopLeft="784.444433649381,314.711107041438" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\DF_Transform_Silver_crm_sales_details\Lookup_FK_Customer"
+          TopLeft="231.388885806004,264.055550644795" />
+        <NodeLayout
+          Size="224,41.6"
+          Id="Package\DF_Transform_Silver_crm_sales_details\DST_Silver_CRM_Sales_Details"
+          TopLeft="413.777772059043,463.111103316148" />
+        <NodeLayout
+          Size="212,41.6"
+          Id="Package\DF_Transform_Silver_crm_sales_details\Conditional Split NULL Value"
+          TopLeft="60,173.999996960163" />
+        <NodeLayout
+          Size="251.2,41.6"
+          Id="Package\DF_Transform_Silver_crm_sales_details\Derived_Convert_INT_to_DATETIME"
+          TopLeft="928.88887638847,197.666663721204" />
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_crm_sales_details.Paths[Sort Output]"
+          TopLeft="847.555546770493,101.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-681.555546770493,72.3999969601632"
+              Start="0,0"
+              End="-681.555546770493,64.8999969601632">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.1999984800816" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.1999984800816"
+                    Point2="0,36.1999984800816"
+                    Point3="-4,36.1999984800816" />
+                  <mssgle:LineSegment
+                    End="-677.555546770493,36.1999984800816" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-677.555546770493,36.1999984800816"
+                    Point2="-681.555546770493,36.1999984800816"
+                    Point3="-681.555546770493,40.1999984800816" />
+                  <mssgle:LineSegment
+                    End="-681.555546770493,64.8999969601632" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-368.602890572747,41.1999984800816,55.650234375,11.228515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_crm_sales_details.Paths[Lookup Match Output]"
+          TopLeft="870.444433649381,356.311107041438">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-344.666661590338,106.79999627471"
+              Start="0,0"
+              End="-344.666661590338,99.2999962747099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.399998137355" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49.399998137355"
+                    Point2="0,53.399998137355"
+                    Point3="-4,53.399998137355" />
+                  <mssgle:LineSegment
+                    End="-340.666661590338,53.399998137355" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-340.666661590338,53.399998137355"
+                    Point2="-344.666661590338,53.399998137355"
+                    Point3="-344.666661590338,57.399998137355" />
+                  <mssgle:LineSegment
+                    End="-344.666661590338,99.2999962747099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-252.845069076419,58.399998137355,161.0234765625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_crm_sales_details.Paths[Lookup Match Output1]"
+          TopLeft="412.188885806004,284.855550644795">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="372.255547843377,50.6555563966434"
+              Start="0,0"
+              End="364.755547843377,50.6555563966434">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="182.127773921689,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="182.127773921689,0"
+                    Point2="186.127773921689,0"
+                    Point3="186.127773921689,4" />
+                  <mssgle:LineSegment
+                    End="186.127773921689,46.6555563966434" />
+                  <mssgle:CubicBezierSegment
+                    Point1="186.127773921689,46.6555563966434"
+                    Point2="186.127773921689,50.6555563966434"
+                    Point3="190.127773921689,50.6555563966434" />
+                  <mssgle:LineSegment
+                    End="364.755547843377,50.6555563966434" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="105.616035640439,-17.609375,161.0234765625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_crm_sales_details.Paths[Derived Column Output]"
+          TopLeft="1054.48887638847,239.266663721204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-732.699990582466,24.7888869235913"
+              Start="0,0"
+              End="-732.699990582466,17.2888869235913">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.39444346179567" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.39444346179567"
+                    Point2="0,12.3944434617957"
+                    Point3="-4,12.3944434617957" />
+                  <mssgle:LineSegment
+                    End="-728.699990582466,12.3944434617957" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-728.699990582466,12.3944434617957"
+                    Point2="-732.699990582466,12.3944434617957"
+                    Point3="-732.699990582466,16.3944434617957" />
+                  <mssgle:LineSegment
+                    End="-732.699990582466,17.2888869235913" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-394.175112478733,17.3944434617957,55.650234375,11.228515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_crm_sales_details.Paths[Conditional Split Default Output]"
+          TopLeft="272,194.799996960163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="656.88887638847,23.6666667610405"
+              Start="0,0"
+              End="649.38887638847,23.6666667610405">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="324.444438194235,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="324.444438194235,0"
+                    Point2="328.444438194235,0"
+                    Point3="328.444438194235,4" />
+                  <mssgle:LineSegment
+                    End="328.444438194235,19.6666667610405" />
+                  <mssgle:CubicBezierSegment
+                    Point1="328.444438194235,19.6666667610405"
+                    Point2="328.444438194235,23.6666667610405"
+                    Point3="332.444438194235,23.6666667610405" />
+                  <mssgle:LineSegment
+                    End="649.38887638847,23.6666667610405" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="225.510180381735,-17.658203125,205.868515625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver"
+          TopLeft="299.547619673569,24.6176470420662" />
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_crm_sales_details.Paths[OLE DB Source Output]"
+          TopLeft="501.947619673569,45.4176470420662">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="237.607927096924,35.3823529579338"
+              Start="0,0"
+              End="230.107927096924,35.3823529579338">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="114.803963548462,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.803963548462,0"
+                    Point2="118.803963548462,0"
+                    Point3="118.803963548462,4" />
+                  <mssgle:LineSegment
+                    End="118.803963548462,31.3823529579338" />
+                  <mssgle:CubicBezierSegment
+                    Point1="118.803963548462,31.3823529579338"
+                    Point2="118.803963548462,35.3823529579338"
+                    Point3="122.803963548462,35.3823529579338" />
+                  <mssgle:LineSegment
+                    End="230.107927096924,35.3823529579338" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="90.9202526109619,-17.2431640625,55.767421875,11.2431640625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Transform_Silver_crm_sales_details\SRC Sales Bronze to Silver">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

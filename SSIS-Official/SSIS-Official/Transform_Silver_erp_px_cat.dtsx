@@ -1,0 +1,886 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2025 3:41:49 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{9D6F551B-9F31-438A-8672-3657264F7796}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{96F12947-F397-45A9-B484-8E88F316DB3D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D18CFEB5-46FB-44E0-9A01-FBB7D403FEB5}"
+      DTS:ObjectName="DATAGUY.SilverSSIS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DATAGUY;Initial Catalog=SilverSSIS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{D18CFEB5-46FB-44E0-9A01-FBB7D403FEB5}DATAGUY.SilverSSIS;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Transform_Silver_erp_px_cat"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BC3AF569-6022-4DD8-8D80-6840DBAAFE82}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Transform_Silver_erp_px_cat"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split ErpPxCat_Validate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Inputs[Conditional Split Input].Columns[id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Inputs[Conditional Split Input].Columns[cat]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="cat"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[cat]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Inputs[Conditional Split Input].Columns[subcat]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="subcat"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[subcat]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Outputs[Is Null Value]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Is Null Value"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[id]}) || [ISNULL](#{Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[cat]}) || [ISNULL](#{Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[subcat]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(id) || ISNULL(cat) || ISNULL(subcat)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Outputs[Conditional Split Null Value Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Null Value Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST ERP PXCat"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[erp_px_cat]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATAGUY.SilverSSIS 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].Columns[cat]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="cat"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].ExternalColumns[cat]"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[cat]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].Columns[subcat]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="subcat"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].ExternalColumns[subcat]"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[subcat]" />
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].Columns[maintenance]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="maintenance"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].ExternalColumns[maintenance]"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[maintenance]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="wstr"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].ExternalColumns[cat]"
+                      dataType="wstr"
+                      length="100"
+                      name="cat" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].ExternalColumns[subcat]"
+                      dataType="wstr"
+                      length="100"
+                      name="subcat" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input].ExternalColumns[maintenance]"
+                      dataType="wstr"
+                      length="10"
+                      name="maintenance" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort_Delete_Null_ID"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Inputs[Sort Input].Columns[id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Inputs[Sort Input].Columns[cat]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="cat"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[cat]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Inputs[Sort Input].Columns[subcat]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="subcat"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[subcat]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Inputs[Sort Input].Columns[maintenance]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="maintenance"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[maintenance]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[id]"
+                      name="id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[cat]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[cat]"
+                      name="cat">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[cat]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[subcat]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[subcat]"
+                      name="subcat">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[subcat]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[maintenance]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output].Columns[maintenance]"
+                      name="maintenance">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[maintenance]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC Bronze ERP Product Extend Category"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[erp_px_cat]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Connections[OleDbConnection]"
+                  connectionManagerID="{7B80C1D0-39CA-4FEB-9BEE-B5C92460E43C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.BronzeDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[cat]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].ExternalColumns[cat]"
+                      length="100"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[cat]"
+                      name="cat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[subcat]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].ExternalColumns[subcat]"
+                      length="100"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[subcat]"
+                      name="subcat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[maintenance]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].ExternalColumns[maintenance]"
+                      length="10"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].Columns[maintenance]"
+                      name="maintenance"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="wstr"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].ExternalColumns[cat]"
+                      dataType="wstr"
+                      length="100"
+                      name="cat" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].ExternalColumns[subcat]"
+                      dataType="wstr"
+                      length="100"
+                      name="subcat" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output].ExternalColumns[maintenance]"
+                      dataType="wstr"
+                      length="10"
+                      name="maintenance" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[cat]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[cat]"
+                      name="cat" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[subcat]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[subcat]"
+                      name="subcat" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[maintenance]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[maintenance]"
+                      name="maintenance" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Transform_Silver_erp_px_cat.Paths[Conditional Split Null Value Output]"
+              endId="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat.Inputs[OLE DB Destination Input]"
+              name="Conditional Split Null Value Output"
+              startId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Outputs[Conditional Split Null Value Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_erp_px_cat.Paths[OLE DB Source Output]"
+              endId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DF_Transform_Silver_erp_px_cat.Paths[Sort Output]"
+              endId="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate.Inputs[Conditional Split Input]"
+              name="Sort Output"
+              startId="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Silver_erp_px_cat"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{51793165-5BEB-4649-A676-FE94E330E12E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Silver_erp_px_cat"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{79C93182-24F9-49D2-8B06-225CDA7EC52A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE erp_px_cat;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8F6D9F4B-11E8-47AC-8FFA-29165B5A1A09}"
+      DTS:From="Package\SQL_Truncate_Silver_erp_px_cat"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Transform_Silver_erp_px_cat" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="234.4,41.6"
+          Id="Package\SQL_Truncate_Silver_erp_px_cat"
+          TopLeft="414.07142944117,51.3823529009588" />
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\DF_Transform_Silver_erp_px_cat"
+          TopLeft="439.785715146332,150.97058813408" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="531.27142944117,92.9823529009588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26.1142857051626,57.9882352331208"
+              Start="0,0"
+              End="26.1142857051626,50.4882352331208">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.9941176165604" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.9941176165604"
+                    Point2="0,28.9941176165604"
+                    Point3="4,28.9941176165604" />
+                  <mssgle:LineSegment
+                    End="22.1142857051626,28.9941176165604" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.1142857051626,28.9941176165604"
+                    Point2="26.1142857051626,28.9941176165604"
+                    Point3="26.1142857051626,32.9941176165604" />
+                  <mssgle:LineSegment
+                    End="26.1142857051626,50.4882352331208" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Transform_Silver_erp_px_cat">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\DF_Transform_Silver_erp_px_cat\Sort_Delete_Null_ID"
+          TopLeft="434.28571508247,218.294117508308" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\DF_Transform_Silver_erp_px_cat\DST ERP PXCat"
+          TopLeft="971.702381577951,218.511892467689" />
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\DF_Transform_Silver_erp_px_cat\Conditional Split ErpPxCat_Validate"
+          TopLeft="585.535708762781,72.1981691035212" />
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_px_cat.Paths[Sort Output]"
+          TopLeft="521.48571508247,218.294117508308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="146.449993680311,-104.495948404787"
+              Start="0,0"
+              End="146.449993680311,-96.9959484047868">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-58.2877810099121" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-58.2877810099121"
+                    Point2="0,-62.2877810099121"
+                    Point3="4,-62.2877810099121" />
+                  <mssgle:LineSegment
+                    End="142.449993680311,-62.2877810099121" />
+                  <mssgle:CubicBezierSegment
+                    Point1="142.449993680311,-62.2877810099121"
+                    Point2="146.449993680311,-62.2877810099121"
+                    Point3="146.449993680311,-66.2877810099121" />
+                  <mssgle:LineSegment
+                    End="146.449993680311,-96.9959484047868" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_px_cat.Paths[Conditional Split Null Value Output]"
+          TopLeft="707.135708762781,113.798169103521">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="339.76667281517,104.713723364167"
+              Start="0,0"
+              End="339.76667281517,97.2137233641675">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.3568616820837" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.3568616820837"
+                    Point2="0,52.3568616820837"
+                    Point3="4,52.3568616820837" />
+                  <mssgle:LineSegment
+                    End="335.76667281517,52.3568616820837" />
+                  <mssgle:CubicBezierSegment
+                    Point1="335.76667281517,52.3568616820837"
+                    Point2="339.76667281517,52.3568616820837"
+                    Point3="339.76667281517,56.3568616820837" />
+                  <mssgle:LineSegment
+                    End="339.76667281517,97.2137233641675" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="92.9544301575852,57.3568616820837,153.8578125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="275.2,41.6"
+          Id="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category"
+          TopLeft="175.500000361885,92.1941175766779" />
+        <EdgeLayout
+          Id="Package\DF_Transform_Silver_erp_px_cat.Paths[OLE DB Source Output]"
+          TopLeft="313.100000361885,133.794117576678">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="180.652381387252,84.49999993163"
+              Start="0,0"
+              End="180.652381387252,76.99999993163">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.2390908684418" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.2390908684418"
+                    Point2="0,50.2390908684418"
+                    Point3="4,50.2390908684418" />
+                  <mssgle:LineSegment
+                    End="176.652381387252,50.2390908684418" />
+                  <mssgle:CubicBezierSegment
+                    Point1="176.652381387252,50.2390908684418"
+                    Point2="180.652381387252,50.2390908684418"
+                    Point3="180.652381387252,54.2390908684418" />
+                  <mssgle:LineSegment
+                    End="180.652381387252,76.99999993163" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Transform_Silver_erp_px_cat\SRC Bronze ERP Product Extend Category">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,610 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2025 4:06:21 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{9B745905-F666-401F-B8CB-DA9599E09DA9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{A1F8DF0B-C031-4DD0-A540-FD36866ABB30}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Load_Gold_Dim_Product"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{06A21F14-860B-4EAA-B858-D88021E29627}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Load_Gold_Dim_Product"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Gold_Dim_Product_Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{2EDE3265-8D2E-42F6-841E-B38C8936261A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.Gold_SSIS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].Columns[prd_id]"
+                      cachedDataType="i4"
+                      cachedName="prd_id"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_id]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_id]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].Columns[prd_key]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="prd_key"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_key]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_key]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].Columns[prd_nm]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="prd_nm"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_nm]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_nm]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].Columns[prd_cost]"
+                      cachedDataType="r8"
+                      cachedName="prd_cost"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_cost]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_cost]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].Columns[prd_line]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="prd_line"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_line]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_line]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].Columns[cat]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="cat"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cat]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[cat]" />
+                    <inputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].Columns[subcat]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="subcat"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[subcat]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[subcat]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
+                      dataType="i4"
+                      name="product_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_id]"
+                      dataType="i4"
+                      name="prd_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_key]"
+                      dataType="wstr"
+                      length="50"
+                      name="prd_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_nm]"
+                      dataType="wstr"
+                      length="100"
+                      name="prd_nm" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_cost]"
+                      dataType="r8"
+                      name="prd_cost" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[prd_line]"
+                      dataType="wstr"
+                      length="50"
+                      name="prd_line" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[cat]"
+                      dataType="wstr"
+                      length="100"
+                      name="cat" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input].ExternalColumns[subcat]"
+                      dataType="wstr"
+                      length="100"
+                      name="subcat" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Silver_Dim_Product_Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    p.prd_id, p.prd_key, p.prd_nm, p.prd_cost, p.prd_line,
+    pc.cat, pc.subcat
+FROM SilverSSIS.dbo.crm_prd_info p
+LEFT JOIN SilverSSIS.dbo.erp_px_cat pc ON p.prd_key = pc.id;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Connections[OleDbConnection]"
+                  connectionManagerID="{79C93182-24F9-49D2-8B06-225CDA7EC52A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATAGUY.SilverSSIS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_id]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_id]"
+                      name="prd_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_key]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_key]"
+                      length="50"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_key]"
+                      name="prd_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_nm]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_nm]"
+                      length="100"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_nm]"
+                      name="prd_nm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_cost]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_cost]"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_cost]"
+                      name="prd_cost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_line]"
+                      length="50"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[prd_line]"
+                      name="prd_line"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[cat]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[cat]"
+                      length="100"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[cat]"
+                      name="cat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[subcat]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[subcat]"
+                      length="100"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].Columns[subcat]"
+                      name="subcat"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_id]"
+                      dataType="i4"
+                      name="prd_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_key]"
+                      dataType="wstr"
+                      length="50"
+                      name="prd_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_nm]"
+                      dataType="wstr"
+                      length="100"
+                      name="prd_nm" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_cost]"
+                      dataType="r8"
+                      name="prd_cost" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[prd_line]"
+                      dataType="wstr"
+                      length="50"
+                      name="prd_line" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[cat]"
+                      dataType="wstr"
+                      length="100"
+                      name="cat" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output].ExternalColumns[subcat]"
+                      dataType="wstr"
+                      length="100"
+                      name="subcat" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_id]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_id]"
+                      name="prd_id" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_key]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_key]"
+                      name="prd_key" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_nm]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_nm]"
+                      name="prd_nm" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_cost]"
+                      dataType="r8"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_cost]"
+                      name="prd_cost" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_line]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[prd_line]"
+                      name="prd_line" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[cat]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[cat]"
+                      name="cat" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[subcat]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[subcat]"
+                      name="subcat" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Load_Gold_Dim_Product.Paths[OLE DB Source Output]"
+              endId="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Gold_Dim_Product"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{42119308-67D4-4BE5-A0EC-15A594BBBDBC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Gold_Dim_Product"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2EDE3265-8D2E-42F6-841E-B38C8936261A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Dim_Product" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FD56CC31-6E77-4455-8E74-B1D5330ACFDE}"
+      DTS:From="Package\SQL_Truncate_Gold_Dim_Product"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Load_Gold_Dim_Product" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="237.6,41.6"
+          Id="Package\SQL_Truncate_Gold_Dim_Product"
+          TopLeft="558.357144034031,61.3235293628332" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\DF_Load_Gold_Dim_Product"
+          TopLeft="577.642858296937,224.382352775614" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="680.600001165484,102.923529362833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,121.458823412781"
+              Start="0,0"
+              End="0,113.958823412781">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,113.958823412781" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Load_Gold_Dim_Product">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source"
+          TopLeft="609.071429856274,107.970588145475" />
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination"
+          TopLeft="629.785715550792,235.852941000853" />
+        <EdgeLayout
+          Id="Package\DF_Load_Gold_Dim_Product.Paths[OLE DB Source Output]"
+          TopLeft="713.071429856274,149.570588145475">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.1142856945187,86.2823528553787"
+              Start="0,0"
+              End="29.1142856945187,78.7823528553787">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.1411764276893" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.1411764276893"
+                    Point2="0,43.1411764276893"
+                    Point3="4,43.1411764276893" />
+                  <mssgle:LineSegment
+                    End="25.1142856945187,43.1411764276893" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.1142856945187,43.1411764276893"
+                    Point2="29.1142856945187,43.1411764276893"
+                    Point3="29.1142856945187,47.1411764276893" />
+                  <mssgle:LineSegment
+                    End="29.1142856945187,78.7823528553787" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Load_Gold_Dim_Product\Silver_Dim_Product_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Load_Gold_Dim_Product\Gold_Dim_Product_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,991 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2025 2:35:12 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{648E5921-F3FE-4342-87B5-FBBE18D5DB05}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{CC2DE393-308C-4CF1-A81D-0925FE5A5B52}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CRM Products]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{379E8B1E-D24A-45EE-90EE-295F9B913EA0}"
+      DTS:ObjectName="CRM Products">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\quoch\Downloads\sql-data-warehouse\data\source_crm\prd_info.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="prd_id"
+              DTS:DTSID="{B2F64815-47BA-4D93-944C-FF2ECB473FE9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="prd_key"
+              DTS:DTSID="{E41CDFD9-EB25-47F5-98F5-636AD8D1062A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="prd_nm"
+              DTS:DTSID="{916EAD09-007D-4CA9-B8AE-0063CA1F5252}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="prd_cost"
+              DTS:DTSID="{1FE65F43-8EDC-4C71-9A9B-5282A9D8C968}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="prd_line"
+              DTS:DTSID="{9191DF38-E09A-4B93-81B8-3CC1232BD0D2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="prd_start_dt"
+              DTS:DTSID="{46E5B71E-852E-41AE-B8E1-C479A215C8D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="prd_end_dt"
+              DTS:DTSID="{73E138F6-3250-45AB-9456-52572ED2A7A1}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DATAGUY.BronzeDB 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{40D786FE-59FA-4C38-AA21-20B16B921D91}"
+      DTS:ObjectName="DATAGUY.BronzeDB 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DATAGUY;Initial Catalog=BronzeDB;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{40D786FE-59FA-4C38-AA21-20B16B921D91}DATAGUY.BronzeDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Import_Bronze_crm_prd_info"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D3A7012E-2CB8-41C9-9384-911B308A3B6C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Import_Bronze_crm_prd_info"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion Change Data Type"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[prd_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="prd_id"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_id]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[prd_key]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="prd_key"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_key]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[prd_nm]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="prd_nm"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_nm]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[prd_cost]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="prd_cost"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_cost]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[prd_line]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="prd_line"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_line]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[prd_start_dt]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="prd_start_dt"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_start_dt]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input].Columns[prd_end_dt]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="prd_end_dt"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_end_dt]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_id]"
+                      name="Copy of prd_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_key]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_key]"
+                      name="Copy of prd_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_key]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_nm]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_nm]"
+                      name="Copy of prd_nm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_nm]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_cost]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_cost]"
+                      name="Copy of prd_cost"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_cost]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_line]"
+                      name="Copy of prd_line"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_line]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_start_dt]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_start_dt]"
+                      name="Copy of prd_start_dt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_start_dt]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_end_dt]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_end_dt]"
+                      name="Copy of prd_end_dt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_end_dt]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST CRM Product Bronze"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[crm_prd_info]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATAGUY.BronzeDB 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATAGUY.BronzeDB 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].Columns[Copy of prd_id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of prd_id"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_id]"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_id]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].Columns[Copy of prd_key]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of prd_key"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_key]"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_key]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].Columns[Copy of prd_nm]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of prd_nm"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_nm]"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_nm]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].Columns[Copy of prd_cost]"
+                      cachedDataType="r4"
+                      cachedName="Copy of prd_cost"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_cost]"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_cost]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].Columns[Copy of prd_line]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of prd_line"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_line]"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_line]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].Columns[Copy of prd_start_dt]"
+                      cachedDataType="date"
+                      cachedName="Copy of prd_start_dt"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_start_dt]"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_start_dt]" />
+                    <inputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].Columns[Copy of prd_end_dt]"
+                      cachedDataType="date"
+                      cachedName="Copy of prd_end_dt"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_end_dt]"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output].Columns[Copy of prd_end_dt]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_id]"
+                      dataType="i4"
+                      name="prd_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_key]"
+                      dataType="wstr"
+                      length="50"
+                      name="prd_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_nm]"
+                      dataType="wstr"
+                      length="100"
+                      name="prd_nm" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_cost]"
+                      dataType="r8"
+                      name="prd_cost" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_line]"
+                      dataType="wstr"
+                      length="50"
+                      name="prd_line" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_start_dt]"
+                      dataType="dbTimeStamp"
+                      name="prd_start_dt" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input].ExternalColumns[prd_end_dt]"
+                      dataType="dbTimeStamp"
+                      name="prd_end_dt" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="SRC CRM Product"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CRM Products]"
+                  connectionManagerRefId="Package.ConnectionManagers[CRM Products]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_id]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_id]"
+                      name="prd_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_key]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_key]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_key]"
+                      name="prd_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_nm]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_nm]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_nm]"
+                      name="prd_nm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_cost]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_cost]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_cost]"
+                      name="prd_cost"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_line]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_line]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_line]"
+                      name="prd_line"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_start_dt]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_start_dt]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_start_dt]"
+                      name="prd_start_dt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_end_dt]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_end_dt]"
+                      length="50"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].Columns[prd_end_dt]"
+                      name="prd_end_dt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="prd_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_key]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="prd_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_nm]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="prd_nm" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_cost]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="prd_cost" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_line]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="prd_line" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_start_dt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="prd_start_dt" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output].ExternalColumns[prd_end_dt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="prd_end_dt" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Import_Bronze_crm_prd_info.Paths[Data Conversion Output]"
+              endId="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DF_Import_Bronze_crm_prd_info.Paths[Flat File Source Output]"
+              endId="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Bronze_crm_prd_info"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F33C2040-B724-42BD-8278-02932A00F48E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Bronze_crm_prd_info"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7B80C1D0-39CA-4FEB-9BEE-B5C92460E43C}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE crm_prd_info;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B4339225-6A80-448F-A62B-6C70780A20D0}"
+      DTS:From="Package\SQL_Truncate_Bronze_crm_prd_info"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Import_Bronze_crm_prd_info" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="251.2,41.6"
+          Id="Package\SQL_Truncate_Bronze_crm_prd_info"
+          TopLeft="178.35714322511,46.0294117291803" />
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\DF_Import_Bronze_crm_prd_info"
+          TopLeft="185.500000319311,170.088235176146" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="303.528571772211,87.6294117291803">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82.4588234469656"
+              Start="0,0"
+              End="0,74.9588234469656">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.9588234469656" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Import_Bronze_crm_prd_info">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\DF_Import_Bronze_crm_prd_info\SRC CRM Product"
+          TopLeft="310.000000532184,107.581699304698" />
+        <NodeLayout
+          Size="246.4,41.6"
+          Id="Package\DF_Import_Bronze_crm_prd_info\Data Conversion Change Data Type"
+          TopLeft="289.11111129229,215.496729828225" />
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\DF_Import_Bronze_crm_prd_info\DST CRM Product Bronze"
+          TopLeft="332.666666293428,331.372544153613" />
+        <EdgeLayout
+          Id="Package\DF_Import_Bronze_crm_prd_info.Paths[Data Conversion Output]"
+          TopLeft="412.31111129229,257.096729828225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.7555550011379,74.2758143253881"
+              Start="0,0"
+              End="18.7555550011379,66.7758143253881">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.137907162694" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.137907162694"
+                    Point2="0,37.137907162694"
+                    Point3="4,37.137907162694" />
+                  <mssgle:LineSegment
+                    End="14.7555550011379,37.137907162694" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.7555550011379,37.137907162694"
+                    Point2="18.7555550011379,37.137907162694"
+                    Point3="18.7555550011379,41.137907162694" />
+                  <mssgle:LineSegment
+                    End="18.7555550011379,66.7758143253881" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Import_Bronze_crm_prd_info.Paths[Flat File Source Output]"
+          TopLeft="390.400000532184,149.181699304698">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.9111107601058,66.315030523527"
+              Start="0,0"
+              End="21.9111107601058,58.815030523527">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1575152617635" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1575152617635"
+                    Point2="0,33.1575152617635"
+                    Point3="4,33.1575152617635" />
+                  <mssgle:LineSegment
+                    End="17.9111107601058,33.1575152617635" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.9111107601058,33.1575152617635"
+                    Point2="21.9111107601058,33.1575152617635"
+                    Point3="21.9111107601058,37.1575152617635" />
+                  <mssgle:LineSegment
+                    End="21.9111107601058,58.815030523527" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

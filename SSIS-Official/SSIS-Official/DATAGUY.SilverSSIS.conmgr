@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DATAGUY.SilverSSIS"
+  DTS:DTSID="{79C93182-24F9-49D2-8B06-225CDA7EC52A}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DATAGUY;Initial Catalog=SilverSSIS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-SSIS-Official-{79C93182-24F9-49D2-8B06-225CDA7EC52A}DATAGUY.SilverSSIS;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
