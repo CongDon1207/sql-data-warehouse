@@ -1,0 +1,802 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/22/2025 11:57:00 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DATAGUY"
+  DTS:CreatorName="DATAGUY\quoch"
+  DTS:DTSID="{D335A8FA-3944-4831-A033-892586F0CC24}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Master"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{DCE122BC-1EE4-4EAD-A4FE-F4D6D9484153}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Bronze Layer"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{25FA15D3-B035-4BC1-AA6B-A474304B0907}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Bronze Layer">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Bronze Layer\CRM Customer"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{62D591C8-1C00-444C-8DE2-3AE5A1ECDEC3}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CRM Customer"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Import_Bronze_crm_cust_info.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Bronze Layer\CRM Product"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{F060DFD4-8476-403F-9E8F-183FF10A63E5}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CRM Product"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Import_Bronze_crm_prd_info.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Bronze Layer\CRM Sales"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{D1214A63-45E8-407A-9D0C-877B25F0B2AC}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CRM Sales"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Import_Bronze_crm_sales_details.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Bronze Layer\ERP Customer"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{D2967897-A0AF-4629-9D14-73344F5BA4AB}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ERP Customer"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Import_Bronze_erp_cust.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Bronze Layer\ERP Location"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{5D91A0D6-9092-4174-BC54-768D3FEA4F05}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ERP Location"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Import_Bronze_erp_loc.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Bronze Layer\ERP PXCat"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{F6534904-93B9-41B7-87D7-F1F31AD56292}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ERP PXCat"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Import_Bronze_erp_px_cat.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Gold Layer"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{6037810E-B4D1-4B4C-B4F5-A80F6F518C3C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Gold Layer">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Gold Layer\Dim Customer"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{AC570E06-4C3A-45CC-B227-96A00E9311A8}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Dim Customer"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Load_Gold_Dim_Customer.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Gold Layer\Dim Date"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{35F49BD6-42CC-4785-8319-C9405C12521C}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Dim Date"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Load_Gold_Dim_Date.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Gold Layer\Dim Product"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{1F8330F9-524C-4D6E-AAA9-883089A12D73}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Dim Product"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Load_Gold_Dim_Product.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Gold Layer\Fact Sales"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{DA6F9698-11A7-4ABF-A2FE-9522D24DD32A}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Fact Sales"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Load_Gold_Fact_Sales.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Gold Layer.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{72E5025A-D392-4AA7-8B11-648A4E1EB949}"
+          DTS:From="Package\Gold Layer\Dim Customer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Gold Layer\Fact Sales" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Gold Layer.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{565276A3-B056-40E8-AF7E-4C98753B938E}"
+          DTS:From="Package\Gold Layer\Dim Date"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Gold Layer\Fact Sales" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Gold Layer.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{EB7F50DF-AAAB-4A5F-9696-4E7B2165D62D}"
+          DTS:From="Package\Gold Layer\Dim Product"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Gold Layer\Fact Sales" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Silver Layer"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4EDF06BD-4812-440E-957B-D229FFAE37DB}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Silver Layer">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Silver Layer\CRM Customer"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{6F390E91-1F8E-4AF0-AB04-67FE507FB915}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CRM Customer"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Transform_Silver_crm_cust_info.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Silver Layer\CRM Product"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{ADB1BBE5-1CC1-4AB6-A4D0-D8E42D34BA22}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CRM Product"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Transform_Silver_crm_prd_info.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Silver Layer\CRM Sales"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{431C0D59-0CB7-4DC6-A826-E3ADF559004A}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CRM Sales"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Import_Bronze_crm_sales_details.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Silver Layer\ERP Customer"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{1069836D-7B9C-48EC-AD69-7141D79C2608}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ERP Customer"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Transform_Silver_erp_cust.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Silver Layer\ERP Location"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{00D30A7E-8F37-4BCE-9E08-64DD810C90C2}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ERP Location"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Transform_Silver_erp_loc.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Silver Layer\ERP PXCat"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{C3C5DC36-859F-475C-8F51-26DE8EF81B4B}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ERP PXCat"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Transform_Silver_erp_px_cat.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Silver Layer.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{831285E3-A698-4EC1-9040-347ED2602437}"
+          DTS:From="Package\Silver Layer\CRM Customer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Silver Layer\CRM Sales" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Silver Layer.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{1E51966B-1FEE-48A3-9C0F-5A31C2304A2C}"
+          DTS:From="Package\Silver Layer\CRM Product"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Silver Layer\CRM Sales" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Silver Layer.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{904FFD02-E8E3-4DB6-80D9-5D2B27FDB8CB}"
+          DTS:From="Package\Silver Layer\CRM Customer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Silver Layer\ERP Customer" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Silver Layer.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{17A8B5CB-7002-4D54-B989-33E3A887253B}"
+          DTS:From="Package\Silver Layer\CRM Customer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Silver Layer\ERP Location" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BB62BFA1-5498-4775-A214-D88C4B9118A9}"
+      DTS:From="Package\Bronze Layer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Silver Layer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{349E585B-5E67-48A8-A066-4BD2D9DED3F4}"
+      DTS:From="Package\Silver Layer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Gold Layer" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\Bronze Layer\CRM Customer"
+          TopLeft="21.9285714635435,16.9705882252397" />
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Bronze Layer\ERP Customer"
+          TopLeft="388.357143608283,32.4411764732694" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\Bronze Layer\CRM Product"
+          TopLeft="20.4999999042068,102.97058820245" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\Bronze Layer\ERP Location"
+          TopLeft="364.785714858953,94.7352941183174" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Bronze Layer\ERP PXCat"
+          TopLeft="345.500000468322,187.441176416294" />
+        <NodeLayout
+          Size="127.2,41.6"
+          Id="Package\Bronze Layer\CRM Sales"
+          TopLeft="15.4999997019768,192.97058820245" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="588,331.2"
+          Size="588,374.4"
+          Id="Package\Bronze Layer"
+          TopLeft="161.21428604576,95.7352940385525" />
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\Silver Layer\CRM Customer"
+          TopLeft="201.928571846717,16.2058823435571" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Silver Layer\ERP PXCat"
+          TopLeft="24.7857142629058,175.441176347924" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Silver Layer\ERP Customer"
+          TopLeft="295.50000048961,110.617647019276" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Silver Layer\ERP Location"
+          TopLeft="163.357143001593,281.323529248883" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Silver Layer\CRM Sales"
+          TopLeft="62.6428570090513,115.558823538126" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Silver Layer\CRM Product"
+          TopLeft="3.35714285258121,16.8344021664362" />
+        <EdgeLayout
+          Id="Package\Silver Layer.PrecedenceConstraints[Constraint]"
+          TopLeft="275.928571846717,57.8058823435571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-86.6190481709985,57.7529411945684"
+              Start="0,0"
+              End="-86.6190481709985,50.2529411945684">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.3653864959416" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.3653864959416"
+                    Point2="0,34.3653864959416"
+                    Point3="-4,34.3653864959416" />
+                  <mssgle:LineSegment
+                    End="-82.6190481709985,34.3653864959416" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.6190481709985,34.3653864959416"
+                    Point2="-86.6190481709985,34.3653864959416"
+                    Point3="-86.6190481709985,38.3653864959416" />
+                  <mssgle:LineSegment
+                    End="-86.6190481709985,50.2529411945684" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Silver Layer.PrecedenceConstraints[Constraint 1]"
+          TopLeft="99.3571428525812,58.4344021664362">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.6190474898035,57.1244213716893"
+              Start="0,0"
+              End="28.6190474898035,49.6244213716893">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.991391229435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.991391229435"
+                    Point2="0,33.991391229435"
+                    Point3="4,33.991391229435" />
+                  <mssgle:LineSegment
+                    End="24.6190474898035,33.991391229435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.6190474898035,33.991391229435"
+                    Point2="28.6190474898035,33.991391229435"
+                    Point3="28.6190474898035,37.991391229435" />
+                  <mssgle:LineSegment
+                    End="28.6190474898035,49.6244213716893" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Silver Layer.PrecedenceConstraints[Constraint 2]"
+          TopLeft="310.928571846717,57.8058823435571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.571428642893,52.8117646757191"
+              Start="0,0"
+              End="80.571428642893,45.3117646757191">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.2270692243632" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.2270692243632"
+                    Point2="0,18.2270692243632"
+                    Point3="4,18.2270692243632" />
+                  <mssgle:LineSegment
+                    End="76.571428642893,18.2270692243632" />
+                  <mssgle:CubicBezierSegment
+                    Point1="76.571428642893,18.2270692243632"
+                    Point2="80.571428642893,18.2270692243632"
+                    Point3="80.571428642893,22.2270692243632" />
+                  <mssgle:LineSegment
+                    End="80.571428642893,45.3117646757191" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Silver Layer.PrecedenceConstraints[Constraint 3]"
+          TopLeft="275.928571846717,57.8058823435571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16.5714288451235,223.517646905326"
+              Start="0,0"
+              End="-16.5714288451235,216.017646905326">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,107.758823452663" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,107.758823452663"
+                    Point2="0,111.758823452663"
+                    Point3="-4,111.758823452663" />
+                  <mssgle:LineSegment
+                    End="-12.5714288451235,111.758823452663" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12.5714288451235,111.758823452663"
+                    Point2="-16.5714288451235,111.758823452663"
+                    Point3="-16.5714288451235,115.758823452663" />
+                  <mssgle:LineSegment
+                    End="-16.5714288451235,216.017646905326" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="529.6,416.8"
+          Size="529.6,460"
+          Id="Package\Silver Layer"
+          TopLeft="844.442858765259,97.2647058019173" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Gold Layer\Dim Customer"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Gold Layer\Dim Date"
+          TopLeft="275.500000510897,17.7999497303764" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Gold Layer\Dim Product"
+          TopLeft="625.500001192093,34.7999497417712" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Gold Layer\Fact Sales"
+          TopLeft="282.642857541235,148.917596726863" />
+        <EdgeLayout
+          Id="Package\Gold Layer.PrecedenceConstraints[Constraint]"
+          TopLeft="96.7,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="235.942857541235,101.817596726863"
+              Start="0,0"
+              End="235.942857541235,94.3175967268626">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.9485567519097" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,62.9485567519097"
+                    Point2="0,66.9485567519097"
+                    Point3="4,66.9485567519097" />
+                  <mssgle:LineSegment
+                    End="231.942857541235,66.9485567519097" />
+                  <mssgle:CubicBezierSegment
+                    Point1="231.942857541235,66.9485567519097"
+                    Point2="235.942857541235,66.9485567519097"
+                    Point3="235.942857541235,70.9485567519097" />
+                  <mssgle:LineSegment
+                    End="235.942857541235,94.3175967268626" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Gold Layer.PrecedenceConstraints[Constraint 1]"
+          TopLeft="375.071429026066,59.3999497303764">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.5176469964862"
+              Start="0,0"
+              End="0,82.0176469964862">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.0176469964862" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Gold Layer.PrecedenceConstraints[Constraint 2]"
+          TopLeft="721.500001192093,76.3999497417712">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-296.857143650858,72.5176469850914"
+              Start="0,0"
+              End="-296.857143650858,65.0176469850914">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.6828363737587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.6828363737587"
+                    Point2="0,47.6828363737587"
+                    Point3="-4,47.6828363737587" />
+                  <mssgle:LineSegment
+                    End="-292.857143650858,47.6828363737587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-292.857143650858,47.6828363737587"
+                    Point2="-296.857143650858,47.6828363737587"
+                    Point3="-296.857143650858,51.6828363737587" />
+                  <mssgle:LineSegment
+                    End="-296.857143650858,65.0176469850914" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="822.4,245.6"
+          Size="822.4,288.8"
+          Id="Package\Gold Layer"
+          TopLeft="172.614284523713,601.429411387329" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="749.21428604576,282.935294038552">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.228572719499,44.3294117633648"
+              Start="0,0"
+              End="87.728572719499,44.3294117633648">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="43.6142863597495,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.6142863597495,0"
+                    Point2="47.6142863597495,0"
+                    Point3="47.6142863597495,4" />
+                  <mssgle:LineSegment
+                    End="47.6142863597495,40.3294117633648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47.6142863597495,40.3294117633648"
+                    Point2="47.6142863597495,44.3294117633648"
+                    Point3="51.6142863597495,44.3294117633648" />
+                  <mssgle:LineSegment
+                    End="87.728572719499,44.3294117633648" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="1109.24285876526,557.264705801917">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-525.428574241546,44.1647055854121"
+              Start="0,0"
+              End="-525.428574241546,36.6647055854121">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.082352792706" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.082352792706"
+                    Point2="0,22.082352792706"
+                    Point3="-4,22.082352792706" />
+                  <mssgle:LineSegment
+                    End="-521.428574241546,22.082352792706" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-521.428574241546,22.082352792706"
+                    Point2="-525.428574241546,22.082352792706"
+                    Point3="-525.428574241546,26.082352792706" />
+                  <mssgle:LineSegment
+                    End="-525.428574241546,36.6647055854121" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

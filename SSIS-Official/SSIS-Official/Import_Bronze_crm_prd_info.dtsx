@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{CC2DE393-308C-4CF1-A81D-0925FE5A5B52}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{A808FDAE-BE89-44B4-9E86-FA917B7A08F7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -867,13 +867,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="251.2,41.6"
-          Id="Package\SQL_Truncate_Bronze_crm_prd_info"
-          TopLeft="178.35714322511,46.0294117291803" />
-        <NodeLayout
           Size="235.2,41.6"
           Id="Package\DF_Import_Bronze_crm_prd_info"
           TopLeft="185.500000319311,170.088235176146" />
+        <NodeLayout
+          Size="251.2,41.6"
+          Id="Package\SQL_Truncate_Bronze_crm_prd_info"
+          TopLeft="178.35714322511,46.0294117291803" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="303.528571772211,87.6294117291803">
