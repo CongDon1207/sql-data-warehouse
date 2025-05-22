@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DATAGUY</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMClSnaL06UOIPZ4e7J1NqAAAAAACAAAAAAAQZgAAAAEAACAAAACcPtO8F1Bp/zSDIz5gBGh2WT+8H3qax9ZQl9Bo7z0BGQAAAAAOgAAAAAIAACAAAACT3XMB1+uepTDkjJS2YVRuHQ7qtEjNICpk7NsfbtiSEJAAAAD1wI5vfzGdk6epyrrp9IkHrIvA2oZ1A+6XAtGQRJ9PUD479+uNqxB/avEN7A1PzB+Ijf9UAl2wsDzVv2ocuQ18uXvv9dTGh/ITgI7TyPuORsahDrsDHCaS78m/pjK9lQEF03qxzYRv4nQ4IInC/5iLEMKlH3VlSRYTogl+CD9Zvbg5tSA7DeL6iQtNzkIJlNRAAAAAtxDWO7FFxjIKFt4/U8d8p4tcBLa7C8FIPbAKTXiK/uyxJId+yoKMJnNwqALjTVmFWhEOg37g18Ia0f2OQqqjVA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMClSnaL06UOIPZ4e7J1NqAAAAAACAAAAAAAQZgAAAAEAACAAAAC8ciOS51NljRdMlU03K2DDsn+TTqnqJlFhUmk3oDpmzwAAAAAOgAAAAAIAACAAAAAYRd0JGeDMakm0GGmCKt6HR2KOECzu7Gch6lzap0iS8ZAAAACr8CdyEH87oCAGp1VfMs704bzuy9vu8M8mmHe7sOU/w2zaW7gcrkcFpmSWmP7UxnfAPCbbHTJl29WixHtApv+2FHpZvakUgbHFFTeQQAnS2ANO0pRgOT5dsIFXFeMByJHQtuwMQsReMO2a4VX6nc7lBYMy6KPfcL1ZldrFXEOoBmD4DPM39QRVQNM3bVbnkcFAAAAAmYXyimpMx/yxqR2mFrgUpclqdCtUctBXwD6xiFH7u0XKYowFK2VFuwr88viB73+YFtPRGY16/JwbgnoRuUWYTA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -46,6 +46,7 @@
           <SSIS:Package SSIS:Name="Load_Gold_Dim_Product.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Load_Gold_Dim_Date.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Load_Gold_Fact_Sales.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Master.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="DATAGUY.BronzeDB.conmgr" />
@@ -1039,8 +1040,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -3873,6 +3872,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{DA5EF937-5FB4-405B-B715-B9C43C690B27}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Master.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D335A8FA-3944-4831-A033-892586F0CC24}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Master</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E25F212A-895A-41CF-91F4-3372D895CD7C}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
